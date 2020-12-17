@@ -1,4 +1,4 @@
 const state = {
-  count: 1,
+  theme: '#409EFF',
 };
 export default state;

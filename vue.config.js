@@ -78,7 +78,7 @@ module.exports = {
   },
   css: {
     //设置为flase后，非*moudle.css/less···也视为css.mouldle
-    requireModuleExtension: false,
+    requireModuleExtension: true,
     loaderOptions: {
       css: {
         modules: {
