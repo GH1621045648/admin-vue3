@@ -46,23 +46,8 @@ module.exports = {
       },
     },
   },
-  // // 配置成多页面的应用
-  // pages: {
-  //   index: {
-  //     entry: './src/index/main.js',
-  //     template: './public/index.html',
-  //     filename: 'index.html',
-  //   },
-  //   sec: {
-  //     entry: './src/xxx/main.js',
-  //     template: './public/index.html',
-  //     filename: 'sec.html',
-  //   },
-  // },
-  //
-
   configureWebpack: (config) => {
-    // 配置成单页面的应用时入口文件;
+    // 入口文件;
     config.entry.app = './src/main.js';
     // 按照环境配plugins;
     if (process.env.NODE_ENV === 'production') {
