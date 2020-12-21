@@ -1,4 +1,4 @@
-# vue3-cli-diy
+# vue3-cli-admin
 
 ## Project setup
 
