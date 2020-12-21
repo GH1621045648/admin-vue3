@@ -72,7 +72,7 @@ module.exports = {
   chainWebpack: (config) => {
     config.module;
     config.plugin('html').tap((args) => {
-      args[0].title = '你想设置的title名字';
+      args[0].title = 'admin-vue3.0';
       return args;
     });
   },
