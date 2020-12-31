@@ -17,7 +17,7 @@ export default {
     };
   },
   created() {
-    this.theme = this.$store.state.globalStore.theme;
+    this.theme = this.$store.state.base.theme;
   },
   watch: {
     async theme(val) {

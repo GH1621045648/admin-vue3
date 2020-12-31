@@ -10,7 +10,6 @@ import 'element-plus/lib/theme-chalk/index.css';
 import locale from 'element-plus/lib/locale/lang/zh-cn';
 import '@/assets/css/common.css';
 import 'es6-promise/auto';
-
 const app = createApp(App);
 
 app.use(store);

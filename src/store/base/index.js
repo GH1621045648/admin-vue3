@@ -3,10 +3,11 @@ import { mutations } from './mutations';
 import { getters } from './getters';
 import { actions } from './actions';
 
-export const globalStore = {
+const base = {
   namespaced: true,
   state,
   mutations,
   getters,
   actions,
 };
+export default base;
