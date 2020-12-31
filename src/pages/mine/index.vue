@@ -1,10 +1,15 @@
-<template>
-  mine
-</template>
-
-<script>
+<script lang="jsx">
 export default {
-  created() {}
+  setup(){
+
+  },
+  render(){
+    return(
+    <>
+      <div>mine</div>
+    </>
+    )
+  }
 };
 </script>
 
