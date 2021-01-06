@@ -10,11 +10,16 @@
   height: 88px;
   box-sizing: border-box;
   display: flex;
+  width: 100%;
+  min-width: 1360px;
+  position: relative;
 }
 
 #main {
   flex-grow: 1;
   display: flex;
+  width: 100%;
+  min-width: 1360px;
 }
 
 #main #aside {

@@ -1,0 +1,103 @@
+.fire {
+  height: 88px;
+  width: 200px;
+  line-height: 72px;
+  text-align: center;
+  font-family: 'Comic Sans MS';
+  font-size: 36px;
+  color: white;
+  text-shadow: 0 0 20px #fefcc9, 10px -10px 30px #feec85, 0px 20px 5px #ffae34,
+    20px -40px 50px #ec760c, -20px -60px 60px #cd4606, 0 -80px 70px #973716,
+    10px -90px 80px #451b0e;
+}
+.fire {
+  cursor: pointer;
+  -webkit-touch-callout: none; /*系统默认菜单被禁用*/
+  -webkit-user-select: none; /*webkit浏览器*/
+  -khtml-user-select: none; /*早期浏览器*/
+  -moz-user-select: none; /*火狐*/
+  -ms-user-select: none; /*IE10*/
+  user-select: none;
+}
+.favicon {
+  width: 88px;
+  height: 88px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .el-icon-user-solid {
+    display: block;
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+  }
+}
+@media screen and (max-width: 640px) {
+  .favicon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 3000;
+  }
+}
+@media screen and (min-width: 640px) and (max-width: 1360px) {
+  .favicon {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 3000;
+  }
+}
+@media screen and (min-width: 1360px) {
+  .favicon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 3000;
+  }
+}
+.user-info {
+  height: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  .user {
+    display: flex;
+    .userName {
+      line-height: 40px;
+      text-indent: 20px;
+      font-family: 'Comic Sans MS';
+      font-size: 18px;
+    }
+  }
+}
+.handle-info {
+  margin-top: 20px;
+  h1 {
+    line-height: 48px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    box-sizing: border-box;
+    font-weight: 600;
+  }
+  ul {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    li {
+      width: 64px;
+      height: 64px;
+      margin-right: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      .icon {
+        width: 32px;
+        height: 32px;
+        margin-top: 15px;
+      }
+    }
+  }
+}

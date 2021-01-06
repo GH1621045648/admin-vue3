@@ -9,12 +9,14 @@
     <el-popover
       placement="bottom"
       :width="320"
-      trigger="click"
+      trigger="manual"
+      v-model:visible="visibilityPopover"
     >
       <template #reference>
         <el-avatar
           icon="el-icon-user-solid"
           :style="{'color':theme}"
+          @click="visibilityPopover = !visibilityPopover"
         ></el-avatar>
       </template>
       <div>
@@ -44,7 +46,7 @@
               </svg>
               <h6>个人信息</h6>
             </li>
-            <li>
+            <li @click="drawer = true">
               <svg
                 class="iconFont icon"
                 aria-hidden="true"
@@ -57,16 +59,33 @@
         </div>
       </div>
     </el-popover>
+    <el-drawer
+      v-model="drawer"
+      :with-header="false"
+      size='400px'
+      @opened='visibilityPopover = !visibilityPopover'
+    >
+      <div class="drawer-body">
+
+      </div>
+    </el-drawer>
   </div>
 </template>
 
 <script>
 import Theme from '@/components/theme/index.vue';
 import { mapState } from 'vuex';
-export default {
+import { defineComponent, ref, onMounted, computed } from 'vue';
+export default defineComponent({
   components: { Theme },
-  data() {
-    return {};
+  setup(props, context) {
+    const drawer = ref(false);
+    const visibilityPopover = ref(false);
+    onMounted(() => {});
+    return {
+      drawer,
+      visibilityPopover
+    };
   },
   computed: {
     ...mapState('base', ['theme', 'userName'])
@@ -79,87 +98,9 @@ export default {
       this.$store.commit('base/changeTheme', value);
     }
   }
-};
+});
 </script>
 
 <style lang='less' scoped>
-.fire {
-  height: 88px;
-  width: 200px;
-  line-height: 72px;
-  text-align: center;
-  font-family: 'Comic Sans MS';
-  font-size: 36px;
-  color: white;
-  text-shadow: 0 0 20px #fefcc9, 10px -10px 30px #feec85, 0px 20px 5px #ffae34, 20px -40px 50px #ec760c, -20px -60px 60px #cd4606, 0 -80px 70px #973716, 10px -90px 80px #451b0e;
-}
-.fire {
-  cursor: pointer;
-  -webkit-touch-callout: none; /*系统默认菜单被禁用*/
-  -webkit-user-select: none; /*webkit浏览器*/
-  -khtml-user-select: none; /*早期浏览器*/
-  -moz-user-select: none; /*火狐*/
-  -ms-user-select: none; /*IE10*/
-  user-select: none;
-}
-.favicon {
-  width: 88px;
-  height: 88px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  .el-icon-user-solid {
-    display: block;
-    font-size: 32px;
-    width: 32px;
-    height: 32px;
-  }
-}
-.user-info {
-  height: 40px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  .user {
-    display: flex;
-    .userName {
-      line-height: 40px;
-      text-indent: 20px;
-      font-family: 'Comic Sans MS';
-      font-size: 18px;
-    }
-  }
-}
-.handle-info {
-  margin-top: 20px;
-  h1 {
-    line-height: 48px;
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
-    box-sizing: border-box;
-    font-weight: 600;
-  }
-  ul {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    li {
-      width: 64px;
-      height: 64px;
-      margin-right: 16px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      cursor: pointer;
-      .icon {
-        width: 32px;
-        height: 32px;
-        margin-top: 15px;
-      }
-    }
-  }
-}
+@import url(../../assets/css/header.less);
 </style>
