@@ -12,6 +12,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "canvas-nest.js": "^2.0.4",
     "core-js": "^3.8.1",
     "element-plus": "^1.0.1-beta.18",
     "es6-promise": "^4.2.8",

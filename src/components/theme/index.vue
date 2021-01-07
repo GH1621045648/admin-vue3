@@ -1,15 +1,19 @@
 <template>
-  <el-color-picker v-model="theme" class="theme-picker" popper-class="theme-picker-dropdown" />
+  <el-color-picker
+    v-model="theme"
+    class="theme-picker"
+    popper-class="theme-picker-dropdown"
+  />
 </template>
 
 <script>
-const version = require("element-plus/package.json").version; // element-ui version from node_modules
-const ORIGINAL_THEME = "#409EFF"; // default color
+const version = require('element-plus/package.json').version; // element-ui version from node_modules
+const ORIGINAL_THEME = '#409EFF'; // default color
 export default {
   data() {
     return {
-      chalk: "", // content of theme-chalk css
-      theme: ""
+      chalk: '', // content of theme-chalk css
+      theme: ''
     };
   },
   created() {
@@ -18,23 +22,17 @@ export default {
   watch: {
     async theme(val) {
       const oldVal = this.chalk ? this.theme : ORIGINAL_THEME;
-      if (typeof val !== "string") return;
-      const themeCluster = this.getThemeCluster(val.replace("#", ""));
-      const originalCluster = this.getThemeCluster(oldVal.replace("#", ""));
+      if (typeof val !== 'string') return;
+      const themeCluster = this.getThemeCluster(val.replace('#', ''));
+      const originalCluster = this.getThemeCluster(oldVal.replace('#', ''));
       const getHandler = (variable, id) => {
         return () => {
-          const originalCluster = this.getThemeCluster(
-            ORIGINAL_THEME.replace("#", "")
-          );
-          const newStyle = this.updateStyle(
-            this[variable],
-            originalCluster,
-            themeCluster
-          );
+          const originalCluster = this.getThemeCluster(ORIGINAL_THEME.replace('#', ''));
+          const newStyle = this.updateStyle(this[variable], originalCluster, themeCluster);
           let styleTag = document.getElementById(id);
           if (!styleTag) {
-            styleTag = document.createElement("style");
-            styleTag.setAttribute("id", id);
+            styleTag = document.createElement('style');
+            styleTag.setAttribute('id', id);
             document.head.appendChild(styleTag);
           }
           styleTag.innerText = newStyle;
@@ -42,48 +40,40 @@ export default {
       };
       if (!this.chalk) {
         const url = `https://unpkg.com/element-plus@${version}/lib/theme-chalk/index.css`;
-        await this.getCSSString(url, "chalk");
+        await this.getCSSString(url, 'chalk');
       }
-      const chalkHandler = getHandler("chalk", "chalk-style");
+      const chalkHandler = getHandler('chalk', 'chalk-style');
       chalkHandler();
-      const styles = [].slice
-        .call(document.querySelectorAll("style"))
-        .filter(style => {
-          const text = style.innerText;
-          return (
-            new RegExp(oldVal, "i").test(text) && !/Chalk Variables/.test(text)
-          );
-        });
-      styles.forEach(style => {
-        const { innerText } = style;
-        if (typeof innerText !== "string") return;
-        style.innerText = this.updateStyle(
-          innerText,
-          originalCluster,
-          themeCluster
-        );
+      const styles = [].slice.call(document.querySelectorAll('style')).filter((style) => {
+        const text = style.innerText;
+        return new RegExp(oldVal, 'i').test(text) && !/Chalk Variables/.test(text);
       });
-      // this.$emit('change', val);
+      styles.forEach((style) => {
+        const { innerText } = style;
+        if (typeof innerText !== 'string') return;
+        style.innerText = this.updateStyle(innerText, originalCluster, themeCluster);
+      });
+      this.$emit('change', val);
     }
   },
   methods: {
     updateStyle(style, oldCluster, newCluster) {
       let newStyle = style;
       oldCluster.forEach((color, index) => {
-        newStyle = newStyle.replace(new RegExp(color, "ig"), newCluster[index]);
+        newStyle = newStyle.replace(new RegExp(color, 'ig'), newCluster[index]);
       });
       return newStyle;
     },
     getCSSString(url, variable) {
-      return new Promise(resolve => {
+      return new Promise((resolve) => {
         const xhr = new XMLHttpRequest();
         xhr.onreadystatechange = () => {
           if (xhr.readyState === 4 && xhr.status === 200) {
-            this[variable] = xhr.responseText.replace(/@font-face{[^}]+}/, "");
+            this[variable] = xhr.responseText.replace(/@font-face{[^}]+}/, '');
             resolve();
           }
         };
-        xhr.open("GET", url);
+        xhr.open('GET', url);
         xhr.send();
       });
     },
@@ -94,7 +84,7 @@ export default {
         let blue = parseInt(color.slice(4, 6), 16);
         if (tint === 0) {
           // when primary color is in its rgb space
-          return [red, green, blue].join(",");
+          return [red, green, blue].join(',');
         } else {
           red += Math.round(tint * (255 - red));
           green += Math.round(tint * (255 - green));

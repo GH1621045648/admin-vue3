@@ -12,7 +12,16 @@
     >
       <SideBar></SideBar>
     </div>
-    <div id="content">
+    <div
+      id="content"
+      v-if="$route.name == 'home'"
+    >
+      <Welcome></Welcome>
+    </div>
+    <div
+      id="content"
+      v-else
+    >
       <router-view></router-view>
     </div>
   </div>
@@ -22,10 +31,12 @@
 <script>
 import Header from './header.vue';
 import SideBar from './sideBar.vue';
+import Welcome from './welcome.vue';
 export default {
   components: {
     Header,
-    SideBar
+    SideBar,
+    Welcome
   },
   data() {
     return {};

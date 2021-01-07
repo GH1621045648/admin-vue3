@@ -75,10 +75,10 @@
 <script>
 import Theme from '@/components/theme/index.vue';
 import { mapState } from 'vuex';
-import { defineComponent, ref, onMounted, computed } from 'vue';
+import { defineComponent, ref, onMounted } from 'vue';
 export default defineComponent({
   components: { Theme },
-  setup(props, context) {
+  setup() {
     const drawer = ref(false);
     const visibilityPopover = ref(false);
     onMounted(() => {});
