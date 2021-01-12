@@ -76,8 +76,10 @@ module.exports = {
       args[0].title = 'admin-vue3.0';
       return args;
     });
+    config.resolve.symlinks(true);
   },
   css: {
+    extract: true,
     //设置为flase后，非*moudle.css/less···也视为css.mouldle
     requireModuleExtension: true,
     loaderOptions: {
