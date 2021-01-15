@@ -25,5 +25,5 @@ app.use(Drwear);
 app.config.globalProperties.$test = (messages = 'test') => {
   alert(messages);
 };
-console.log(app._context.components);
+// console.log(app._context.components);
 app.mount('#app');
