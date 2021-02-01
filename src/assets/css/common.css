@@ -1,3 +1,7 @@
+/* html {
+  font-size: calc(100vw / 7.5);
+} */
+/*rem的一种方式，750的图纸下。1rem = 100px；375下，1rem = 50px*/
 #app {
   display: flex;
   width: 100%;
